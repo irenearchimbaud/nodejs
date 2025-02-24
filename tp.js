@@ -40,8 +40,20 @@ function rendreMonnaie(montant, billetMax) {
             montant = (montant - nombre * billet).toFixed(2);
         }
     }
-    
-    return rendu;
+
+
+
+    for (const [key, value] of Object.entries(rendu)) {
+
+        unite = ""
+
+        if (key >= 5) {
+            unite = value > 1 ? "billets" : "billet";
+        } else {
+            unite = value > 1 ? "pièces" : "pièce";
+        }
+        console.log(`${value} ${unite} de ${key}`);
+      }
 }
 
 console.log(rendreMonnaie(227.42, 50));

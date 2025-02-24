@@ -21,28 +21,27 @@ function transformNumberToString(number) {
 
     if(number >= 1000) {
         const arrondi = Math.floor(number / 1000);
-        words += 
+        words += 1
     }
+
 }
 
-function rendreMonnaie(montant) {
-
-    const billetMax = 50;
-
-    const billets = [500, 200, 100, 50, 20, 10, 5]
-
-    const billetsValables = []
-
-    const 
-
-    for (const i of billets) {
-        if(billetMax < i) {
-            return
-        } else {
-            billetsValables.push(i)
+function rendreMonnaie(montant, billetMax) {
+    const billets = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01];
+    
+    const billetsValables = billets.filter(billet => billet <= billetMax);
+    
+    const rendu = {};
+    
+    for (const billet of billetsValables) {
+        if (montant >= billet) {
+            const nombre = Math.floor(montant / billet);
+            rendu[billet] = nombre;
+            montant = (montant - nombre * billet).toFixed(2);
         }
     }
-
-
     
+    return rendu;
 }
+
+console.log(rendreMonnaie(227.42, 50));

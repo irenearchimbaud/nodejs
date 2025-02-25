@@ -60,4 +60,27 @@ function rendreMonnaie(montant, billetMax) {
       }
 }
 
-rendreMonnaie(333.22, 200);
+function testObject() {
+    const original = {
+        a : 1,
+        b: {c: 2}
+    }
+
+    const clone = {
+        ...original
+    }
+
+    const clone2 = {
+        ...original,
+    }
+
+    clone2.b.c = 5
+
+    console.log(clone, clone2)
+}
+
+function chargerDonnees(id, callback) {
+    console.log("chargement des données");
+
+    
+}

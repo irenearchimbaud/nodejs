@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Projet node",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node index.js"
   },
   "author": "Irène Archimbaud",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.1.9"
+  }
 }

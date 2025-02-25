@@ -1,12 +1,12 @@
+import http from "http";
+import fs from "fs";
+
 // Exemple 1: Module global
 console.log("Hello Node.js!");
 
-// Variables globales
-console.log(__filename); // Chemin complet du fichier
-console.log(__dirname);  // Chemin du répertoire
-
-// Exemple 2: Module HTTP (serveur simple)
-const http = require('http');
+// // Variables globales
+// console.log(__filename); // Chemin complet du fichier
+// console.log(__dirname);  // Chemin du répertoire
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
@@ -17,9 +17,6 @@ const server = http.createServer((req, res) => {
 server.listen(3000, '127.0.0.1', () => {
   console.log('Serveur en écoute sur http://127.0.0.1:3000/');
 });
-
-// Exemple 3: Module FS (système de fichiers)
-const fs = require('fs');
 
 // Synchrone (bloquant)
 try {
@@ -46,9 +43,14 @@ fs.promises.readFile('fichier.txt', 'utf8')
 // Version async/await
 async function lireFichier() {
   try {
-    const data = await fs.promises.readFile
+    const data = await fs.promises.readFile('fichier.txt', 'utf8');
+    console.log(data);
+  } catch (err) {
+    console.error('Erreur:', err);
   }
 }
+
+lireFichier();
 
 
 

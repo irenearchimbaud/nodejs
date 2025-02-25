@@ -27,11 +27,17 @@ function transformNumberToString(number) {
 }
 
 function rendreMonnaie(montant, billetMax) {
+
     const billets = [500, 200, 100, 50, 20, 10, 5, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01];
     
     const billetsValables = billets.filter(billet => billet <= billetMax);
     
     const rendu = {};
+
+    if (!(/^\d+(\.\d{1,2})?$/.test(montant) && billets.includes(billetMax))) {
+        console.log("montant ou billet max invalides")
+        return;
+    }
     
     for (const billet of billetsValables) {
         if (montant >= billet) {
@@ -40,8 +46,6 @@ function rendreMonnaie(montant, billetMax) {
             montant = (montant - nombre * billet).toFixed(2);
         }
     }
-
-
 
     for (const [key, value] of Object.entries(rendu)) {
 
@@ -56,4 +60,4 @@ function rendreMonnaie(montant, billetMax) {
       }
 }
 
-console.log(rendreMonnaie(227.42, 50));
+rendreMonnaie(333.22, 200);

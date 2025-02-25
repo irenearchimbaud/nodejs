@@ -10,7 +10,7 @@
   },
   "author": "Irène Archimbaud",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "nodemon": "^3.1.9"
   }
 }

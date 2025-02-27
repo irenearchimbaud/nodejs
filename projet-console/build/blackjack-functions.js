@@ -1,30 +1,21 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createDeck = createDeck;
-exports.isBlackjack = isBlackjack;
-exports.calculateGameTotal = calculateGameTotal;
-exports.showGame = showGame;
-const blackjack_variables_js_1 = require("./blackjack-variables.js");
-const chalk_1 = __importDefault(require("chalk"));
-function createDeck() {
+import { symbols, numbers } from "./blackjack-variables.js";
+import chalk from "chalk";
+export function createDeck() {
     let deck = [];
-    for (let symbol of blackjack_variables_js_1.symbols) {
-        for (let number of blackjack_variables_js_1.numbers) {
+    for (let symbol of symbols) {
+        for (let number of numbers) {
             deck.push({ number, symbol });
         }
     }
     deck.sort(() => Math.random() - 0.5);
     return deck;
 }
-function isBlackjack(game) {
+export function isBlackjack(game) {
     return game.length === 2 &&
         game.some(card => card.number === 'A') &&
         game.some(card => ['J', 'Q', 'K', '10'].includes(card.number));
 }
-function calculateGameTotal(game) {
+export function calculateGameTotal(game) {
     let total = 0;
     let as = 0;
     for (let { number } of game) {
@@ -42,10 +33,10 @@ function calculateGameTotal(game) {
     }
     return total;
 }
-function showGame(name, game) {
+export function showGame(name, game) {
     const coloredCards = game.map(card => {
         const cardText = `[${card.number}${card.symbol}]`;
-        return (card.symbol === '♠' || card.symbol === '♣') ? chalk_1.default.blue(cardText) : chalk_1.default.red(cardText);
+        return (card.symbol === '♠' || card.symbol === '♣') ? chalk.blue(cardText) : chalk.red(cardText);
     });
     console.log(typeof (coloredCards));
     console.log(`${name}: ` + coloredCards.join(' ') + ` (Total: ${calculateGameTotal(game)})`);

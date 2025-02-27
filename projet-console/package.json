@@ -2,11 +2,12 @@
   "name": "projet-console",
   "version": "1.0.0",
   "description": "projet console",
-  "main": "src/index.ts",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon --watch \"src/**\" --ext \"ts,json\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node src/\"",
-    "dev": "ts-node src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc"
   },
   "author": "Irène Archimbaud",
   "license": "ISC",

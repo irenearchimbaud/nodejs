@@ -1,8 +1,8 @@
 import chalk from "chalk";
-import readline from "readline-sync"
-import { createDeck, isBlackjack, calculateGameTotal, showGame } from "./blackjack-functions";
-import { rainbowText } from "./functions";
-import { Deck } from "./deck-interface";
+import readlineSync from 'readline-sync';
+import { createDeck, isBlackjack, calculateGameTotal, showGame } from "./blackjack-functions.js";
+import { rainbowText } from "./functions.js";
+import { Deck } from "./deck-interface.js";
 
 function playBlackjack(): void {
     console.log(`${rainbowText("Bienvenue dans le blackjack !")} 🎲 \n`);
@@ -31,7 +31,7 @@ function playBlackjack(): void {
             break;
         }
 
-        let choice: string = readline.question("\n Tirer une carte (t) ou rester (r) ? ").toLowerCase();
+        let choice: string = readlineSync.question("\n Tirer une carte (t) ou rester (r) ? ").toLowerCase();
         if (choice === 't') {
             playerGame.push(deck.pop() as Deck);
         } else if (choice === 'r') {

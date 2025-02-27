@@ -46,7 +46,5 @@ export function showGame(name: string, game: Deck[]): void {
         return (card.symbol === '♠' || card.symbol === '♣') ? chalk.blue(cardText) : chalk.red(cardText);
     });
 
-    console.log(typeof(coloredCards));
-
     console.log(`${name}: ` + coloredCards.join(' ') + ` (Total: ${calculateGameTotal(game)})`);
 }
